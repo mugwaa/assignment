@@ -1,0 +1,116 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+#pragma warning(disable:4996)
+
+int selection;
+int stuId, validId;
+char exitCon;
+
+void main() {
+	
+	while (1) {
+		selectMenu();
+
+		switch (selection) {
+		case 1:
+			printf("KP Administrator Menu\n");
+			break;
+
+		case 2:
+			studentMenu();
+			break;
+
+		case 0:
+			exitMenu();
+			break;
+
+		default:
+			printf("Please make a valid input...\n\n");
+		}
+	}
+}
+
+selectMenu() {
+	printf("================\n\n");
+	printf("Kolej Pasar Administrator Menu \t > 1\n");
+	printf("Kolej Pasar Student Menu \t > 2\n");
+	printf("Exit \t\t\t\t > 0\n");
+	scanf("%d", &selection);
+	rewind(stdin);
+
+	system("cls");
+	return selection;
+}
+
+exitMenu() {
+	printf("================\n\n");
+	printf("Exit? (Y/N)\n");
+	scanf("%c", &exitCon);
+	exitCon = toupper(exitCon);
+	system("cls");
+
+	if (exitCon == 'Y') {
+		printf("End...\n\n\n");
+		exit(0);
+	}
+
+	while (exitCon == 'Y' || exitCon != 'N') {
+		if (exitCon == 'Y' || exitCon == 'N') {
+			break;
+		}
+		printf("Please make a valid input...\n\n");
+		printf("================\n\n");
+		printf("Exit? (Y/N)\n");
+		scanf("%c", &exitCon);
+		exitCon = toupper(exitCon);
+		system("cls");
+
+		if (exitCon == 'Y') {
+			printf("End...\n\n\n");
+			exit(0);
+		}
+
+		else if (exitCon == 'N') {
+			break;
+		}
+
+	}
+}
+
+studentMenu() {
+	int gpaExit;
+
+	gpaExit = 1;
+	validId = 2310659;
+
+	while (1) {
+		printf("Kolej Pasar Student Menu\n\n");
+		printf("================\n\n");
+		printf("Please login with student ID...\n\n\n");
+		printf("Return \t\t\t > 0\n");
+		scanf("%d", &stuId);
+		rewind(stdin);
+
+		system("cls");
+
+		if (stuId == validId) {
+			while (gpaExit != 0){
+				printf("GPA/CGPA Menu\n\n");
+				printf("================\n\n");
+				printf("Your grades are fucking dogshit\n");
+				printf("Return \t\t\t\t > 0\n");
+				scanf("%d", &gpaExit);
+				rewind(stdin);
+
+				system("cls");
+			}
+		}
+		else if (stuId == 0) {
+			break;
+		}
+		else {
+			printf("Please input a valid ID...\n\n");
+		}
+	}
+}
